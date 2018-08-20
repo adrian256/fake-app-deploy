@@ -5,12 +5,12 @@ steps:
     title: Deploying to port
     environment:
     - CHART_REF=fake-app
-    - CHART_VERSION=v0.3.0
+    - CHART_VERSION=v0.4.0
     - RELEASE_NAME=fake-app
     - KUBE_CONTEXT=${{KUBE_CONTEXT_PROD}}
     - NAMESPACE=default
-    - VALUE_image_pullPolicy=Always
     - VALUE_image_pullSecret=${{KUBE_PULL_SECRET}}
+    - VALUESFILE_common=values.yaml
     when:
       branch:
         only:
@@ -21,12 +21,12 @@ steps:
     title: Deploying to staging
     environment:
     - CHART_REF=fake-app
-    - CHART_VERSION=v0.3.0
+    - CHART_VERSION=v0.4.0
     - RELEASE_NAME=fake-app
     - KUBE_CONTEXT=${{KUBE_CONTEXT_STAGING}}
     - NAMESPACE=default
-    - VALUE_image_pullPolicy=Always
     - VALUE_image_pullSecret=${{KUBE_PULL_SECRET}}
+    - VALUESFILE_common=values.yaml
     when:
       branch:
         only:
